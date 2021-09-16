@@ -147,6 +147,8 @@ export default async function callbackHandler(
           `NEXT-AUTH: AccountNotLinked, userByProviderAccountId.id=${userByProviderAccountId.id} != user.id=${user.id}`
         )
 
+        await dispatchEvent(events.accountNotLinked, userByProviderAccountId, user)
+
         throw new AccountNotLinkedError()
       }
       // If there is no active session, but the account being signed in with is already
