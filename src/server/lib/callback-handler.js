@@ -143,6 +143,10 @@ export default async function callbackHandler(
         // If the user is currently signed in, but the new account they are signing in
         // with is already associated with another account, then we cannot link them
         // and need to return an error.
+        console.log(
+          `NEXT-AUTH: AccountNotLinked, userByProviderAccountId.id=${userByProviderAccountId.id} != user.id=${user.id}`
+        )
+
         throw new AccountNotLinkedError()
       }
       // If there is no active session, but the account being signed in with is already
