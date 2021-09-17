@@ -147,7 +147,7 @@ export default async function callbackHandler(
           `NEXT-AUTH: AccountNotLinked, userByProviderAccountId.id=${userByProviderAccountId.id} != user.id=${user.id}`
         )
 
-        await dispatchEvent(events.accountNotLinked, providerAccount, userByProviderAccountId, user)
+        await dispatchEvent(events.accountNotLinked, { providerAccount, userByProviderAccountId, user })
 
         throw new AccountNotLinkedError()
       }

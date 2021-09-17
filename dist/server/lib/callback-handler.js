@@ -120,7 +120,11 @@ async function callbackHandler(sessionToken, profile, providerAccount, options) 
         }
 
         console.log(`NEXT-AUTH: AccountNotLinked, userByProviderAccountId.id=${userByProviderAccountId.id} != user.id=${user.id}`);
-        await (0, _dispatchEvent.default)(events.accountNotLinked, providerAccount, userByProviderAccountId, user);
+        await (0, _dispatchEvent.default)(events.accountNotLinked, {
+          providerAccount,
+          userByProviderAccountId,
+          user
+        });
         throw new _errors.AccountNotLinkedError();
       }
 
